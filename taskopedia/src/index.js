@@ -1,24 +1,11 @@
 import ReactDOM from "react-dom/client";
-import Header from "./Components/header"
-import Footer from "./Components/footer"
-import Student from "./Components/students"
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Student from "./Components/Students";
+import MainBody from "./Components/MainBody";
 import "./CSS/style.css";
 
-function MainBody() {
 
-  const whatWeWillLearn = "ReactJS";
-  const totalLectures = 3;
-
-  return (
-    <div>
-      <p> In this course we will learn about {whatWeWillLearn} </p>
-      <p> In this course we will lean {totalLectures} lectures </p>
-      <div>
-        Enter task : <input maxLength={5} readOnly={false}></input> 
-      </div>
-    </div>
-  );
-}
 const studentList = [
   { name: "rodrigo", experience: 24},
   { name: "rapaz", experience: 32},
