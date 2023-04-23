@@ -1,4 +1,7 @@
 import ReactDOM from "react-dom/client";
+import Header from "./Components/header"
+import Footer from "./Components/footer"
+import Student from "./Components/students"
 import "./CSS/style.css";
 
 function MainBody() {
@@ -16,61 +19,29 @@ function MainBody() {
     </div>
   );
 }
-
-function MainHeader() {
-  return <h1 className="text-primary">React Course</h1>;
-}
-
-const subHeaderStyle = {
-  color: "blueviolet",
-  backgroundColor: "lightgray",
-};
-function SubHeader() {
-  return <h1 style={subHeaderStyle}>Exciting Course</h1>;
-}
-
-function Header() {
-  return (
-    <div>
-      <MainHeader />
-      <SubHeader />
-    </div>
-  );
-}
-
-function Students(){
-  const fullName = "Rodrigo Travessa";
-  const programmingExperience = 2;
-
-
-  return (
-    <div className="container p-4">
-      <div className="row">
-        Students Enrolled
-      </div>
-      <div className="row border">
-        <div className="col-2"> <img src={`https://ui-avatars.com/api/?name=${fullName}`} className="w-100"></img></div>
-        <div className="col-10"> {fullName} <br/>
-        Programming Experience {programmingExperience} years</div>
-      </div>
-    </div>
-  )
-}
-
-function Footer() {
-  return (
-    <p style={{ color: "white", backgroundColor: "black", padding: "10" }}>
-      Happy Coding
-    </p>
-  );
-}
+const studentList = [
+  { name: "rodrigo", experience: 24},
+  { name: "rapaz", experience: 32},
+  { name: "rapariga", experience: 41},
+  { name: "trmp", experience: 12},
+  { name: "bidne", experience: 321},
+  { name: "Fortnite", experience: 87}]
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <div>
+  <div className="container">
     <Header />
     <MainBody />
-    <Students />
+    <div className="row"> Students Enrolled</div>
+    <Student experience={2} name="Rodrigo Travessa" />
+    <Student experience={5} name="Carlos Travessa" />
+    <Student experience={7} name="Rosemeri Travessa" />
+    {studentList.map((student, index) => {
+      return (
+        <Student key={index} name={student.name} experience={student.experience} />
+      )
+      
+    })}
     <Footer />
   </div>
 );
