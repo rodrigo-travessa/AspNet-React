@@ -10,9 +10,10 @@ function Counter() {
   
   const [multiplier, setMultiplier] = useState(10);
 
-  const handleInput = () => {
-    setMultiplier(document.getElementById('multiplierInput').value)
-  }
+  // This method is obsolete, due to onChange being handled inline.
+  // const handleInput = () => {
+  //   setMultiplier(document.getElementById('multiplierInput').value)
+  // }
 
   const handleMultiplier = () => dispatch(multiply(multiplier))
   const handleDivider = () => dispatch(divide(multiplier))
@@ -24,11 +25,20 @@ function Counter() {
     <div>
       Counter : {count}
       <div>
-        <button onClick={() => dispatch(increment())}>+1</button>
+        <button onClick={() => dispatch(increment())}>+1</button>34
         <button onClick={() => dispatch(decrement())}>-1</button>
       </div>
       <div>
-        <input type='text' placeholder={multiplier} id='multiplierInput' defaultValue={multiplier} onChange={handleInput}></input>
+        <input type='text' 
+        placeholder={multiplier} 
+        id='multiplierInput' 
+        defaultValue={multiplier} 
+        /* 
+          onChange={handleInput}></input> 
+          onChange={(e) => setMultiplier(e.target.value)}
+        */
+        onChange={(e) => setMultiplier(e.target.value)}></input>
+
         <button onClick={handleMultiplier}>x</button>
         <button onClick={handleDivider}>/</button>
       </div>
